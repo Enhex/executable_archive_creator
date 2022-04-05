@@ -12,7 +12,7 @@ auto file_to_bytes(char* filepath)
 
 	std::string output =
 		"#pragma once\n"
-		"unsigned char const archive_file_bytes[] = {";
+		"unsigned char constexpr archive_file_bytes[] = {";
 	auto iter = std::istreambuf_iterator<char>(file);
 	auto const end = std::istreambuf_iterator<char>();
 	if(iter != end)  {
@@ -52,10 +52,10 @@ int main(int argc, char* argv[])
 		std::ofstream ofile(output_dir / "archive_info.h", std::ios::binary);
 		std::string content =
 			"#pragma once\n"
-			"auto const archive_name = \"";
+			"char constexpr archive_name[] = \"";
 		content += fs::path(argv[1]).filename().string();
 		content += "\";\n"
-			"auto const run_command = \"";
+			"auto constexpr run_command = \"";
 		content += argv[3];
 		content += "\";";
 		ofile << content;
