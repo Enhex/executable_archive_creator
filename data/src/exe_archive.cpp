@@ -1,6 +1,5 @@
 #include <cstdio>
 #include <cstdlib>
-#include <fstream>
 #include <string.h>
 
 #include "archive_src.h"
@@ -11,8 +10,7 @@ int main()
 	char constexpr dir_path[] = "/tmp/ea/";
 	std::system("mkdir -p /tmp/ea");
 
-	//TODO make sure the filepath doesn't exist
-	//fs::path const archive_filepath = dir_path + archive_name;
+	//TODO make sure the dir_path/archive_name filepath doesn't exist
 
 	// save archive bytes to file
 	char constexpr extract_cmd[] = "tar -xf ";
@@ -21,8 +19,12 @@ int main()
    	strcat(str, dir_path);
    	strcat(str, archive_name);
 	{
-		std::ofstream file(str+sizeof(extract_cmd), std::ios::binary);
-		file.write((const char*)archive_file_bytes, sizeof(archive_file_bytes));
+		auto file = fopen(str+sizeof(extract_cmd)-1, "w");
+		if(file == nullptr)
+			return EXIT_FAILURE;
+		for(auto c : archive_file_bytes)
+			fputc(c, file);
+		fclose(file);
 	}
 
 	// extract archive
