@@ -51,6 +51,6 @@ workspace(name)
 
 		filter "configurations:Release"
 			defines { "NDEBUG" }
-			optimize "Size"
+			optimize "Full"
 			buildoptions{"-fdata-sections -ffunction-sections"} -- needed for -gc-sections
 			linkoptions{"-s -Wl,--gc-sections -Wl,--as-needed"}
