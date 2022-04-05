@@ -1,5 +1,5 @@
-#include <cstdio>
-#include <cstdlib>
+#include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
 
@@ -9,7 +9,7 @@
 int main()
 {
 	char constexpr dir_path[] = "/tmp/ea/";
-	std::system("mkdir -p /tmp/ea");
+	system("mkdir -p /tmp/ea");
 	chdir("/tmp/ea");
 
 	//TODO make sure the dir_path/archive_name filepath doesn't exist
@@ -31,9 +31,9 @@ int main()
 	}
 
 	// extract archive
-	std::system(str);
+	system(str);
 	free(str);
 
 	// run command
-	std::system(run_command);
+	system(run_command);
 }
