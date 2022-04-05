@@ -34,8 +34,10 @@ workspace(name)
 		flags{"LinkTimeOptimization"}
 		exceptionhandling("Off")
 		rtti("Off")
-
-		buildoptions{"-lstdc++"}
+		-- Ubuntu enables PIE by default and then recognize PIE binaries as shared libs instead of executables,
+		-- and won't launch them from file manager.
+		pic "Off"
+		linkoptions{"-no-pie"}
 
 		filter "toolset:gcc"
 			buildoptions{"-pipe"}
