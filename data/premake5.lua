@@ -58,3 +58,4 @@ workspace(name)
 			linkoptions{"-s -Wl,--gc-sections -Wl,--as-needed"}
 
 			buildoptions{"-fno-stack-protector -fno-unwind-tables -fno-asynchronous-unwind-tables -fno-math-errno -fno-unroll-loops -fmerge-all-constants -fno-ident -Wl,-z,norelro -Wl,--hash-style=sysv -Wl,--build-id=none"}
+			buildoptions{"-fno-inline -Wl,--disable-auto-import,--disable-runtime-pseudo-reloc -Wl,-s,-x"}
